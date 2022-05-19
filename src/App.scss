@@ -1,0 +1,17 @@
+@use './styles/partials/globals';
+@use './styles/partials/mixins';
+@use './styles/partials/variables';
+
+.app {
+    padding: 1rem;
+
+    @include mixins.tablet {
+        padding: 1rem 2rem;
+    }
+
+    @include mixins.desktop {
+        padding: 2rem;
+        width: variables.$desktop-width;
+        margin: 0 auto;
+    }
+}
