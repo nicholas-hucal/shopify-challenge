@@ -1,0 +1,21 @@
+@use '../../styles/partials/mixins';
+@use '../../styles/partials/colors';
+
+.form {
+    margin-top: 2rem;
+    @include mixins.flex(column, false, false, 1rem);
+
+    &__label {
+        @include mixins.flex(column, false, false, 1rem);
+    }
+
+    &__input {
+        height: 10rem;
+    }
+
+    &__submit {
+        background-color: colors.$primary-blue;
+        color: colors.$primary-white;
+        padding: 1rem;
+    }
+}
