@@ -1,0 +1,7 @@
+@use '../../styles/partials/mixins';
+@use '../../styles/partials/colors';
+
+.response {
+    border: 1px solid colors.$primary-black;
+    padding: 2rem;
+}

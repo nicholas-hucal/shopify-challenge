@@ -2,8 +2,11 @@
 @use '../../styles/partials/colors';
 
 .form {
-    margin-top: 2rem;
-    @include mixins.flex(column, false, false, 1rem);
+
+    &__details {
+        margin-top: 2rem;
+        @include mixins.flex(column, false, false, 1rem);
+    }
 
     &__label {
         @include mixins.flex(column, false, false, 1rem);

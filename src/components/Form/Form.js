@@ -8,13 +8,15 @@ const Form = () => {
     }
 
     return (
-        <form className='form'>
-            <label className='form__label'>
-                Enter Prompt
-                <textarea className='form__input'></textarea>
-            </label>
-            <button className='form__submit' type='submit' onClick={handleSubmit}>Submit</button>
-        </form>
+        <section className='form'>
+            <form className='form__details'>
+                <label className='form__label'>
+                    Enter Prompt
+                    <textarea className='form__input'></textarea>
+                </label>
+                <button className='form__submit' type='submit' onClick={handleSubmit}>Submit</button>
+            </form>
+        </section>
     )
 }
 
