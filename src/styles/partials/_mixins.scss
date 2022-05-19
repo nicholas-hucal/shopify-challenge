@@ -13,8 +13,9 @@
     }
 }
 
-@mixin flex($justify, $align, $gap) {
+@mixin flex($type, $justify, $align, $gap) {
     display: flex;
+    flex-direction: $type;
     @if $justify != false {
         justify-content: $justify;
     }
