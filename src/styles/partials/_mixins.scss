@@ -1,0 +1,28 @@
+@use "variables" as *;
+@use "colors";
+
+@mixin tablet() {
+    @media (min-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin desktop() {
+    @media (min-width: $desktop-breakpoint) {
+        @content;
+    }
+}
+
+@mixin flex($justify, $align, $gap) {
+    display: flex;
+    @if $justify != false {
+        justify-content: $justify;
+    }
+    @if $align != false {
+        align-items: $align;
+    }
+    @if $gap != false {
+        gap: $gap;
+    }
+    @content;
+}

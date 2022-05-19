@@ -1,0 +1,79 @@
+@use "mixins";
+@use "colors";
+
+@font-face {
+    font-family: 'Catamaran';
+    src: 
+        url('../../assets/fonts/Catamaran/Catamaran-VariableFont_wght.ttf');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: 
+        url('../../assets/fonts/Lato/Lato-Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: 
+        url('../../assets/fonts/Lato/Lato-Thin.ttf');
+    font-weight: 200;
+    font-style: normal;
+}
+
+body {
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+h1 {
+    margin: 0;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 900;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    @include mixins.tablet {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+}
+
+h2 {
+    margin: 0 0 1rem 0;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 900;
+    font-size: 1.75rem;
+    line-height: 1.75rem;
+    @include mixins.tablet {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}
+
+h3 {
+    margin: 0 0 1rem 0;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 900;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    @include mixins.tablet {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+    }
+}
+
+p {
+    margin: 0 0 1rem 0;
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.625rem;
+    @include mixins.tablet {
+        font-size: 1rem;
+        line-height: 1.75rem;
+    }
+}
