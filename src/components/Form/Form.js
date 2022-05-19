@@ -1,13 +1,23 @@
 import React, {useState} from 'react';
 import './Form.scss';
 import api from '../../utils/api';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { v4 as uuidv4 } from 'uuid';
 
 const Form = ({addResponse}) => {
 
-    const [prompt, setPrompt] = useState('');
+    const [prompt, setPrompt] = useLocalStorage('prompt', '');
+    const [sending, setSending] = useState(false);
+
+    const options = [
+        "How does this work?",
+        "I'm interested in learning more about OpenAI",
+        "What is your name?"
+    ]
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setSending(sending => !sending);
         api.getResponse(prompt)
             .then(response => {
                 addResponse({
@@ -17,6 +27,7 @@ const Form = ({addResponse}) => {
             })
             .then(_ => {
                 setPrompt('');
+                setSending(sending => !sending);
             })
             .catch(err => {
                 console.log(err);
@@ -27,14 +38,43 @@ const Form = ({addResponse}) => {
         setPrompt(e.target.value)
     }
 
+    const handleSelect = (e, option) => {
+        e.preventDefault();
+        setPrompt(option)
+    }
+
     return (
         <section className='form'>
             <form className='form__details'>
                 <label className='form__label'>
                     Enter Prompt
-                    <textarea className='form__input' onChange={handleChange} value={prompt}></textarea>
+                    <input 
+                        type="text" 
+                        className='form__input' 
+                        onChange={handleChange} 
+                        value={prompt}
+                    />
                 </label>
-                <button className='form__submit' type='submit' onClick={handleSubmit}>Submit</button>
+                <div className='form__options'>
+                    {options.map(option => {
+                        return <button 
+                            key={uuidv4()}
+                            type='button' 
+                            className='form__choice' 
+                            onClick={(e) => handleSelect(e, option)}
+                        >
+                            {option}
+                        </button>
+                    })}
+                </div>
+                <button 
+                    className={`form__submit ${!sending || 'form__submit--sending'}`} 
+                    type='submit' 
+                    onClick={handleSubmit} 
+                    disabled={sending}
+                >
+                    {sending ? 'processing' : 'submit'}
+                </button>
             </form>
         </section>
     )

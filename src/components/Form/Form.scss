@@ -13,12 +13,16 @@
     }
 
     &__input {
-        height: 10rem;
+        padding: 1rem;
     }
 
     &__submit {
         background-color: colors.$primary-blue;
         color: colors.$primary-white;
         padding: 1rem;
+
+        &--sending {
+            opacity: 0.5;
+        }
     }
 }
