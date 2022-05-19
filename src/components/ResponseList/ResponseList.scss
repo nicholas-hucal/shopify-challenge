@@ -1,0 +1,7 @@
+@use '../../styles/partials/mixins';
+@use '../../styles/partials/colors';
+
+.response-list {
+    margin: 1rem 0;
+    @include mixins.flex(column, false, false, 1rem);
+}
