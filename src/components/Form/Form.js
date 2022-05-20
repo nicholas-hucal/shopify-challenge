@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import api from '../../utils/api';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { v4 as uuidv4 } from 'uuid';
+import { ImWarning } from 'react-icons/im';
 import { FiSend } from 'react-icons/fi';
 import { VscGear } from 'react-icons/vsc';
 import './Form.scss';
@@ -10,7 +11,7 @@ const Form = ({ addResponse }) => {
 
     const [prompt, setPrompt] = useLocalStorage('prompt', '');
     const [sending, setSending] = useState(false);
-    const [validation, setValidation] = useState(false);
+    const [validation, setValidation] = useState(true);
 
     const options = [
         "How does this work",
@@ -18,8 +19,21 @@ const Form = ({ addResponse }) => {
         "What is your name"
     ]
 
+    useEffect(() => {
+        if (!validation) {
+
+            validate()
+        }
+    }, [prompt.length]);
+
     const validate = () => {
-        return prompt.length > 2;
+        if (prompt.length < 3) {
+            setValidation(false);
+            return false;
+        } else {
+            setValidation(true);
+            return true;
+        }
     }
 
     const handleSubmit = (e) => {
@@ -40,10 +54,7 @@ const Form = ({ addResponse }) => {
                 .catch(err => {
                     console.log(err);
                 })
-        } else {
-
         }
-
     }
 
     const handleChange = (e) => {
@@ -86,6 +97,9 @@ const Form = ({ addResponse }) => {
                         aria-invalid="true"
                     />
                 </label>
+                <span className={`form__help ${!validation && 'form__help--activated'}`}>
+                    <ImWarning /> You must enter more than 3 characters or select a default prompt from above!!
+                </span>
                 <button
                     className={`form__submit ${!sending || 'form__submit--sending'}`}
                     type='submit'
@@ -93,7 +107,7 @@ const Form = ({ addResponse }) => {
                     disabled={sending}
                     aria-disabled={sending}
                 >
-                    {sending ? <><VscGear/> processing</> : <><FiSend /> send</>}
+                    {sending ? <><VscGear /> processing</> : <><FiSend /> send</>}
                 </button>
             </form>
         </section>

@@ -29,6 +29,17 @@
         outline: none;
     }
 
+    &__help {
+        display: none;
+        color: colors.$primary-red;
+        background-color: colors.$secondary-red;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        &--activated {
+            display: inline-block;
+        }
+    }
+
     &__options {
         @include mixins.flex(column, space-between, false, 1rem);
 
