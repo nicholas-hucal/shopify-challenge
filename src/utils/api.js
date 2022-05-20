@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const BASE_URL = "https://api.openai.com/v1/engines/text-curie-001/completions";
+const BASE_URL = "https://api.openai.com/v1/engines/text-curie-001/completions";
 
 const config = {
     headers: {

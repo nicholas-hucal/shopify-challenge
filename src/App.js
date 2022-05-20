@@ -26,11 +26,13 @@ function App() {
   }, [responses]);
 
   return (
-    <main className='app'>
+    <div className='app'>
       <Header />
-      <Form addResponse={addResponse}/>
-      <ResponseList responses={responses} deleteResponse={deleteResponse}/>
-    </main>
+      <main>
+        <Form addResponse={addResponse}/>
+        <ResponseList responses={responses} deleteResponse={deleteResponse}/>
+      </main>
+    </div>
   );
 }
 
