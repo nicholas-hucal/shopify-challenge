@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../utils/api';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { v4 as uuidv4 } from 'uuid';
 import { ImWarning } from 'react-icons/im';
 import { FiSend } from 'react-icons/fi';
@@ -9,9 +8,10 @@ import './Form.scss';
 
 const Form = ({ addResponse }) => {
 
-    const [prompt, setPrompt] = useLocalStorage('prompt', '');
+    const [prompt, setPrompt] = useState('');
     const [sending, setSending] = useState(false);
-    const [validation, setValidation] = useState(true);
+    const [validation, setValidation] = useState(false);
+    const [firstFocus, setFirstFocus] = useState(false);
 
     const options = [
         "How does this work",
@@ -20,25 +20,21 @@ const Form = ({ addResponse }) => {
     ]
 
     useEffect(() => {
-        if (!validation) {
-
-            validate()
+        const validate = () => {
+            if (prompt.length < 3) {
+                setValidation(false);
+            } else {
+                setValidation(true);
+            }
         }
-    }, [prompt.length]);
-
-    const validate = () => {
-        if (prompt.length < 3) {
-            setValidation(false);
-            return false;
-        } else {
-            setValidation(true);
-            return true;
+        if (firstFocus) {
+            validate();
         }
-    }
+    }, [prompt.length, firstFocus]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (validate()) {
+        if (validation) {
             setSending(sending => !sending);
             api.getResponse(prompt)
                 .then(response => {
@@ -50,20 +46,29 @@ const Form = ({ addResponse }) => {
                 .then(_ => {
                     setPrompt('');
                     setSending(sending => !sending);
+                    setFirstFocus(false);
+                    setValidation(false)
                 })
                 .catch(err => {
                     console.log(err);
                 })
+        } else {
+            setFirstFocus(true);
         }
     }
 
     const handleChange = (e) => {
-        setPrompt(e.target.value)
+        changePrompt(e.target.value);
     }
 
     const handleSelect = (e, option) => {
         e.preventDefault();
-        setPrompt(option)
+        changePrompt(option);
+    }
+
+    const changePrompt = (value) => {
+        firstFocus || setFirstFocus(true);
+        setPrompt(value);
     }
 
     return (
@@ -97,7 +102,7 @@ const Form = ({ addResponse }) => {
                         aria-invalid="true"
                     />
                 </label>
-                <span className={`form__help ${!validation && 'form__help--activated'}`}>
+                <span className={`form__help ${(!validation && firstFocus) && 'form__help--activated'}`}>
                     <ImWarning /> You must enter more than 3 characters or select a default prompt from above!!
                 </span>
                 <button
