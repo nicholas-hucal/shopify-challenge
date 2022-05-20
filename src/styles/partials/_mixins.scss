@@ -34,6 +34,9 @@
         border: 1px solid colors.$primary-grey;
         padding: 0.5rem 1rem;
     }
+    &:hover {
+        opacity: 0.9;
+    }
 }
 
 @mixin flex($type, $justify, $align, $gap) {

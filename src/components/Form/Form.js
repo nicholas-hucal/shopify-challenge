@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import api from '../../utils/api';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { v4 as uuidv4 } from 'uuid';
+import { FiSend } from 'react-icons/fi';
+import { VscGear } from 'react-icons/vsc';
 import './Form.scss';
 
 const Form = ({ addResponse }) => {
@@ -11,9 +13,9 @@ const Form = ({ addResponse }) => {
     const [validation, setValidation] = useState(false);
 
     const options = [
-        "How does this work?",
+        "How does this work",
         "I'm interested in learning more about OpenAI",
-        "What is your name?"
+        "What is your name"
     ]
 
     const validate = () => {
@@ -91,7 +93,7 @@ const Form = ({ addResponse }) => {
                     disabled={sending}
                     aria-disabled={sending}
                 >
-                    {sending ? 'processing' : 'submit'}
+                    {sending ? <><VscGear/> processing</> : <><FiSend /> send</>}
                 </button>
             </form>
         </section>

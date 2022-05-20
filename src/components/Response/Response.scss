@@ -26,6 +26,7 @@
 
     &__delete {
         @include mixins.button('grey');
+        @include mixins.flex(row, center, center, 0.75rem);
         width: 10rem;
     }
 }
