@@ -30,7 +30,7 @@ const Form = ({ addResponse }) => {
                 .then(response => {
                     addResponse({
                         prompt: prompt,
-                        response: response.data.choices[0].text
+                        response: response.data.choices[0].text.substring(2)
                     })
                 })
                 .then(_ => {
