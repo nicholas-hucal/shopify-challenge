@@ -13,11 +13,14 @@ const Form = ({ addResponse }) => {
     const [validation, setValidation] = useState(false);
     const [firstFocus, setFirstFocus] = useState(false);
 
-    const options = [
-        "How does this work",
-        "I'm interested in learning more about OpenAI",
-        "What is your name"
-    ]
+    const getOptions = () => {
+        const options = [
+            "How does this work",
+            "I'm interested in learning more about OpenAI",
+            "What is your name"
+        ];
+        return options;
+    }
 
     useEffect(() => {
         const validate = () => {
@@ -78,7 +81,7 @@ const Form = ({ addResponse }) => {
                     Default Prompts
                 </p>
                 <div className='form__options'>
-                    {options.map(option => {
+                    {getOptions().map(option => {
                         return <button
                             key={uuidv4()}
                             type='button'
