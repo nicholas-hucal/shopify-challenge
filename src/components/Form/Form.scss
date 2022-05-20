@@ -3,9 +3,18 @@
 
 .form {
 
+    background-color: colors.$primary-ivory;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
     &__details {
-        margin-top: 2rem;
         @include mixins.flex(column, false, false, 1rem);
+    }
+
+    &__default {
+        margin-bottom: 0;
     }
 
     &__label {
@@ -14,13 +23,40 @@
 
     &__input {
         padding: 1rem;
+        border: 1px solid colors.$primary-grey;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        outline: none;
+    }
+
+    &__help {
+        display: none;
+        color: colors.$primary-red;
+        background-color: colors.$secondary-red;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        &--activated {
+            display: inline-block;
+        }
+    }
+
+    &__options {
+        @include mixins.flex(column, space-between, false, 1rem);
+
+        @include mixins.tablet {
+            flex-direction: row;
+        }
+    }
+
+    &__choice {
+        @include mixins.button('green');
+        flex: 1;
     }
 
     &__submit {
-        background-color: colors.$primary-blue;
-        color: colors.$primary-white;
-        padding: 1rem;
-
+        @include mixins.button('blue');
+        @include mixins.flex(row, center, center, 0.75rem);
+        margin-top: 2rem 0;
         &--sending {
             opacity: 0.5;
         }

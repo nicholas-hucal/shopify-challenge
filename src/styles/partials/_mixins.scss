@@ -13,6 +13,32 @@
     }
 }
 
+@mixin button($color) {
+    padding: 1rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    margin: 0;
+    @if $color == 'blue' {
+        background-color: colors.$primary-blue;
+        color: colors.$primary-white;
+        border: 1px solid colors.$primary-blue;
+    }
+    @if $color == "green" {
+        background-color: colors.$primary-green;
+        color: colors.$primary-white;
+        border: 1px solid colors.$primary-green;
+    }
+    @if $color == "grey" {
+        background-color: colors.$primary-grey;
+        color: colors.$primary-white;
+        border: 1px solid colors.$primary-grey;
+        padding: 0.5rem 1rem;
+    }
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
 @mixin flex($type, $justify, $align, $gap) {
     display: flex;
     flex-direction: $type;
