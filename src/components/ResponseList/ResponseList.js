@@ -3,12 +3,10 @@ import Response from '../Response';
 import './ResponseList.scss';
 import { v4 as uuidv4 } from 'uuid';
 
-const ResponseList = () => {
-
-    const responses = [1, 2, 3, 4, 5];
+const ResponseList = ({responses, deleteResponse}) => {
 
     const handleDelete = (index) => {
-        console.log(index);
+        deleteResponse(index);
     }
 
     return (
