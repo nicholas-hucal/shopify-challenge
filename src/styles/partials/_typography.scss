@@ -24,7 +24,7 @@
     font-style: normal;
 }
 
-body {
+body, button {
     font-size: 16px;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
@@ -34,7 +34,7 @@ body {
 h1 {
     margin: 0;
     font-family: 'Catamaran', sans-serif;
-    font-weight: 900;
+    font-weight: 700;
     font-size: 1.75rem;
     line-height: 2.25rem;
     @include mixins.tablet {
@@ -46,7 +46,7 @@ h1 {
 h2 {
     margin: 0 0 1rem 0;
     font-family: 'Catamaran', sans-serif;
-    font-weight: 900;
+    font-weight: 700;
     font-size: 1.75rem;
     line-height: 1.75rem;
     @include mixins.tablet {
@@ -58,7 +58,7 @@ h2 {
 h3 {
     margin: 0 0 1rem 0;
     font-family: 'Catamaran', sans-serif;
-    font-weight: 900;
+    font-weight: 700;
     font-size: 0.8125rem;
     line-height: 1.25rem;
     @include mixins.tablet {

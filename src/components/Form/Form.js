@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import api from '../../utils/api';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { v4 as uuidv4 } from 'uuid';
 import './Form.scss';
 
-const Form = ({addResponse}) => {
+const Form = ({ addResponse }) => {
 
     const [prompt, setPrompt] = useLocalStorage('prompt', '');
     const [sending, setSending] = useState(false);
@@ -41,7 +41,7 @@ const Form = ({addResponse}) => {
         } else {
 
         }
-        
+
     }
 
     const handleChange = (e) => {
@@ -56,24 +56,15 @@ const Form = ({addResponse}) => {
     return (
         <section className='form'>
             <form className='form__details'>
-                <label className='form__label'>
-                    Enter Prompt
-                    <input 
-                        type="text" 
-                        className='form__input' 
-                        onChange={handleChange} 
-                        value={prompt}
-                        aria-label="enter a prompt"
-                        aria-required="true"
-                        aria-invalid="true"
-                    />
-                </label>
+                <p className='form__default'>
+                    Default Prompts
+                </p>
                 <div className='form__options'>
                     {options.map(option => {
-                        return <button 
+                        return <button
                             key={uuidv4()}
-                            type='button' 
-                            className='form__choice' 
+                            type='button'
+                            className='form__choice'
                             onClick={(e) => handleSelect(e, option)}
                             aria-label={option}
                         >
@@ -81,10 +72,22 @@ const Form = ({addResponse}) => {
                         </button>
                     })}
                 </div>
-                <button 
-                    className={`form__submit ${!sending || 'form__submit--sending'}`} 
-                    type='submit' 
-                    onClick={handleSubmit} 
+                <label className='form__label'>
+                    Enter Prompt
+                    <input
+                        type="text"
+                        className='form__input'
+                        onChange={handleChange}
+                        value={prompt}
+                        aria-label="enter a prompt"
+                        aria-required="true"
+                        aria-invalid="true"
+                    />
+                </label>
+                <button
+                    className={`form__submit ${!sending || 'form__submit--sending'}`}
+                    type='submit'
+                    onClick={handleSubmit}
                     disabled={sending}
                     aria-disabled={sending}
                 >

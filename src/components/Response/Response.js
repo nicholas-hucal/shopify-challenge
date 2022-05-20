@@ -12,7 +12,9 @@ const Response = ({response, index, handleDelete}) => {
         <h3 className='response__heading'>Response</h3>
         <p className='response__data'>{response.response}</p>
       </div>
-      <button className='response__delete' onClick={() => handleDelete(index)} aria-label="delete this prompt">delete</button>
+      <div className='response__actions'>
+        <button className='response__delete' onClick={() => handleDelete(index)} aria-label="delete this prompt">delete</button>
+      </div>
     </article>
   )
 }
