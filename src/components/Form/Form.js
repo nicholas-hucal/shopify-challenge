@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../utils/api';
+import { useOptions } from '../../hooks/useOptions';
 import { v4 as uuidv4 } from 'uuid';
 import { ImWarning } from 'react-icons/im';
 import { FiSend } from 'react-icons/fi';
@@ -12,15 +13,7 @@ const Form = ({ addResponse }) => {
     const [sending, setSending] = useState(false);
     const [validation, setValidation] = useState(false);
     const [firstFocus, setFirstFocus] = useState(false);
-
-    const getOptions = () => {
-        const options = [
-            "How does this work",
-            "I'm interested in learning more about OpenAI",
-            "What is your name"
-        ];
-        return options;
-    }
+    const [options, setOptions] = useOptions();
 
     useEffect(() => {
         const validate = () => {
@@ -64,9 +57,10 @@ const Form = ({ addResponse }) => {
         changePrompt(e.target.value);
     }
 
-    const handleSelect = (e, option) => {
+    const handleSelect = (e, option, index) => {
         e.preventDefault();
         changePrompt(option);
+        setOptions(index);
     }
 
     const changePrompt = (value) => {
@@ -81,12 +75,12 @@ const Form = ({ addResponse }) => {
                     Default Prompts
                 </p>
                 <div className='form__options'>
-                    {getOptions().map(option => {
+                    {options.map((option, index) => {
                         return <button
                             key={uuidv4()}
                             type='button'
                             className='form__choice'
-                            onClick={(e) => handleSelect(e, option)}
+                            onClick={(e) => handleSelect(e, option, index)}
                             aria-label={option}
                         >
                             {option}
@@ -102,7 +96,7 @@ const Form = ({ addResponse }) => {
                         value={prompt}
                         aria-label="enter a prompt"
                         aria-required="true"
-                        aria-invalid="true"
+                        aria-invalid={!validation}
                     />
                 </label>
                 <span className={`form__help ${(!validation && firstFocus) && 'form__help--activated'}`}>
