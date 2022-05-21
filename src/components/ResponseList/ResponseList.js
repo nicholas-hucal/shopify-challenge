@@ -11,7 +11,13 @@ const ResponseList = ({responses, deleteResponse}) => {
 
     return (
         <section className='response-list'>
-            {responses.map((response, index) => <Response key={uuidv4()} response={response} index={index} handleDelete={handleDelete}/>)}
+            {responses.map((response, index) => <Response 
+                    key={uuidv4()} 
+                    response={response} 
+                    index={index} 
+                    handleDelete={handleDelete}
+                />
+            )}
         </section>
     )
 }

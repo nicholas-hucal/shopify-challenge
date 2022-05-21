@@ -18,7 +18,7 @@ const useOptions = () => {
         return shuffled.slice(0, num);
     }
 
-    const changeValues = (used, index) => {
+    const changeValues = (index) => {
         const existingValues = [...values].filter(val => ![...options].includes(val));
         const newOne = getNumRandom(1, existingValues);
         const newOptions = [...options];

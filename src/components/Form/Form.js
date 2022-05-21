@@ -60,7 +60,7 @@ const Form = ({ addResponse }) => {
     const handleSelect = (e, option, index) => {
         e.preventDefault();
         changePrompt(option);
-        setOptions(option, index);
+        setOptions(index);
     }
 
     const changePrompt = (value) => {
@@ -96,7 +96,7 @@ const Form = ({ addResponse }) => {
                         value={prompt}
                         aria-label="enter a prompt"
                         aria-required="true"
-                        aria-invalid="true"
+                        aria-invalid={!validation}
                     />
                 </label>
                 <span className={`form__help ${(!validation && firstFocus) && 'form__help--activated'}`}>
