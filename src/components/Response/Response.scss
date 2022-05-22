@@ -1,0 +1,32 @@
+@use '../../styles/partials/mixins';
+@use '../../styles/partials/colors';
+
+.response {
+    border: 1px solid colors.$secondary-grey;
+    padding: 2rem;
+    background-color: colors.$secondary-grey;
+    border-radius: 1rem;
+    @include mixins.flex(column, false, false, false);
+
+    &__area {
+        @include mixins.flex(row, false, baseline, 1rem);
+    }
+
+    &__heading {
+        flex: 1 0;
+    }
+
+    &__data {
+        flex: 5 0;
+    }
+
+    &__actions {
+        @include mixins.flex(row, flex-end, false, false);
+    }
+
+    &__delete {
+        @include mixins.button('grey');
+        @include mixins.flex(row, center, center, 0.75rem);
+        width: 10rem;
+    }
+}

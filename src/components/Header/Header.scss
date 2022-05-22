@@ -1,0 +1,7 @@
+@use '../../styles/partials/mixins';
+
+.header {
+    &__heading {
+        @include mixins.flex(row, false, false, 0.5rem);
+    }
+}

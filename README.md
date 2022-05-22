@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Shopify Frontend Developer Intern Challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## The Challenge
 
-## Available Scripts
+You will write an app that sends plain text prompts to the OpenAI API and displays the results in a list.
 
-In the project directory, you can run:
+### Requirements
 
-### `npm start`
+We'd like your app to have a simple-to-use interface that includes the following:
+- A form for entering text prompts
+- Submitting the form sends the prompt to the OpenAI API
+- Results are displayed in a list, sorted from newest to oldest. Each result should include the original prompt and a response from the API.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Extras
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Save responses if the user leaves or reloads the page
+- Let the user choose the AI engine from a select box
+- Add some presets for the user to quickly send a good prompt
+- Make the app more specific to a single purpose. See the OpenAI Examples and prompt design docs for inspiration.
 
-### `npm test`
+## The App
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The end product is a React App using hooks. The user is displayed with a responsive web app that provides 3 default prompts that when clicked will fill the input automatically ready to be sent to the API. If the user chooses they can as well type their own prompt and send that to the API. Either way a validation of a minumum of 3 characters is applied to any input. When the user selects a default prompt another option is loaded in it's spot to allow for fresh choices. 
 
-### `npm run build`
+For styling a responsive layout has been applied to make the app usable at any dimension. The addition of icons from the React Icons library allows for a little more context to the app. A neutral color palette was chosen using [coolors website](https://coolors.co).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For a bit more usability localstorage was activated to store the users sent requests so on page refresh you will see your previous responses. As well a delete functionality was added to each response in order to delete any responses the user no longer wishes to see. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Overall this was a fun project and I look forward to many more challenges like this.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Tech Stack
 
-### `npm run eject`
+- Axios
+- Sass
+- OpenAI
+- LocalStorage
+- Hooks
+- React Icons
+- Jest
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Installation and Deployment
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In order to use this app you will need to clone or download a copy. Navigate to the projects folder and open in your favourite editor, or open a terminal/command line and ``cd`` to the working directory. Run ``npm install`` in order to install all required modules. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+You will then need to sign up for an openAI api key at [openai](https://beta.openai.com/signup). Once you have your key open the ``.env.example`` file and place your key there. Rename the file to ``.env``.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You can then run ``npm start`` to start the application.
 
-## Learn More
+You can view the demo [here](https://luxury-belekoy-6b55c3.netlify.app).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Testing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Using Jest I have added some simple tests to check if components will render correctly and have their contents displayed. In the form component I also check that validation is working correctly. You can run the test suites simply by running ``npm test`` from the command line when in the working directory.
