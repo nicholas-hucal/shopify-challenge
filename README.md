@@ -46,7 +46,7 @@ You will then need to sign up for an openAI api key at [openai](https://beta.ope
 
 You can then run ``npm start`` to start the application.
 
-You can view the demo [here](https://).
+You can view the demo [here](https://luxury-belekoy-6b55c3.netlify.app).
 
 ## Testing
 
