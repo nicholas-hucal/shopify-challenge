@@ -1,7 +1,6 @@
 import React from 'react';
 import Response from '../Response';
 import './ResponseList.scss';
-import { v4 as uuidv4 } from 'uuid';
 
 const ResponseList = ({responses, deleteResponse}) => {
 
@@ -12,7 +11,7 @@ const ResponseList = ({responses, deleteResponse}) => {
     return (
         <section className='response-list'>
             {responses.map((response, index) => <Response 
-                    key={uuidv4()} 
+                    key={index} 
                     response={response} 
                     index={index} 
                     handleDelete={handleDelete}
