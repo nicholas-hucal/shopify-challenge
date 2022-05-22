@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../utils/api';
 import { useOptions } from '../../hooks/useOptions';
-import { v4 as uuidv4 } from 'uuid';
 import { ImWarning } from 'react-icons/im';
 import { FiSend } from 'react-icons/fi';
 import { VscGear } from 'react-icons/vsc';
@@ -77,7 +76,7 @@ const Form = ({ addResponse }) => {
                 <div className='form__options'>
                     {options.map((option, index) => {
                         return <button
-                            key={uuidv4()}
+                            key={index}
                             type='button'
                             className='form__choice'
                             onClick={(e) => handleSelect(e, option, index)}
@@ -90,6 +89,7 @@ const Form = ({ addResponse }) => {
                 <label className='form__label'>
                     Enter Prompt
                     <input
+                        data-testid="prompt"
                         type="text"
                         className='form__input'
                         onChange={handleChange}
@@ -99,7 +99,7 @@ const Form = ({ addResponse }) => {
                         aria-invalid={!validation}
                     />
                 </label>
-                <span className={`form__help ${(!validation && firstFocus) && 'form__help--activated'}`}>
+                <span data-testid="warning" className={`form__help ${(!validation && firstFocus) && 'form__help--activated'}`}>
                     <ImWarning /> You must enter more than 3 characters or select a default prompt from above!!
                 </span>
                 <button

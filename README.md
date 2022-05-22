@@ -32,7 +32,6 @@ Overall this was a fun project and I look forward to many more challenges like t
 
 - Axios
 - Sass
-- UUID
 - OpenAI
 - LocalStorage
 - Hooks
@@ -48,3 +47,7 @@ You will then need to sign up for an openAI api key at [openai](https://beta.ope
 You can then run ``npm start`` to start the application.
 
 You can view the demo [here](https://).
+
+## Testing
+
+Using Jest I have added some simple tests to check if components will render correctly and have their contents displayed. In the form component I also check that validation is working correctly. You can run the test suites simply by running ``npm test`` from the command line when in the working directory.
